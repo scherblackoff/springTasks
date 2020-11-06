@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="musicBeanRap"
+          init-method="init"
+          destroy-method="destroy"
+          class="taskFromYouTube.task1.RapMusic">
+    </bean>
+
+    <bean id="musicBeanRock"
+          init-method="init"
+          destroy-method="destroy"
+          class="taskFromYouTube.task1.RockMusic">
+    </bean>
+
+    <bean id="musicBeanClassic"
+          init-method="init"
+          destroy-method="destroy"
+          class="taskFromYouTube.task1.ClassicMusic">
+    </bean>
+
+    <bean id="musicPlayer"
+          class="taskFromYouTube.task1.MusicPlayer"
+          scope="prototype">
+        <property name="name" value="rock"/>
+        <property name="volume" value="50"/>
+        <property name="music">
+            <list>
+                <ref bean="musicBeanRap"/>
+                <ref bean="musicBeanRock"/>
+                <ref bean="musicBeanClassic"/>
+            </list>
+        </property>
+    </bean>
+
+
+</beans>
